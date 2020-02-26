@@ -22,7 +22,7 @@ namespace Tooltip
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : ChromelessWindow
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
@@ -49,38 +49,34 @@ namespace Tooltip
     
             //CellToolTipOpening event
             gridcontrol.CellToolTipOpening += Gridcontrol_CellToolTipOpening;
-            
-            //gridcontrol.Model
-            for (int i = 0; i < gridcontrol.Model.ColumnCount; i++)
-            {
-                //Set tooltip for header
-                gridcontrol.Model.RowStyles[0].ToolTip = "Hello";
-                gridcontrol.Model.RowStyles[0].ShowTooltip = true;
 
-                //Set tooltip for specific cell
-                gridcontrol.Model[1, 1].ToolTip = " Grid (" + gridcontrol.Model[1, 1].CellValue + ") ";
-                gridcontrol.Model[1, 1].ShowTooltip = true;
-                gridcontrol.Model[1, 1].Enabled = false;
+            //Set tooltip for specific cell
+            gridcontrol.Model[1, 1].ToolTip = " Grid (" + gridcontrol.Model[1, 1].CellValue + ") ";
+            gridcontrol.Model[1, 1].ShowTooltip = true;
+            gridcontrol.Model[1, 1].Enabled = false;
 
-                //Access the datatemplate for tooltip using ToolTipTemplate
-                gridcontrol.Model[1, 1].TooltipTemplate = (DataTemplate)this.Resources["tooltipTemplate1"];
+            //Access the datatemplate for tooltip using ToolTipTemplate
+            gridcontrol.Model[1, 1].TooltipTemplate = (DataTemplate)this.Resources["tooltipTemplate1"];
 
-                ////Access the datatemplate for tooltip using ToolTipTemplateKey
-                //gridcontrol.Model[1, 1].TooltipTemplateKey = "tooltipTemplate1";
+            ////Access the datatemplate for tooltip using ToolTipTemplateKey
+            //gridcontrol.Model[1, 1].TooltipTemplateKey = "tooltipTemplate1";
 
-                //Set tooltip for specific row
-                gridcontrol.Model.RowStyles[1].ToolTip = " First row ";
-                gridcontrol.Model.RowStyles[1].ShowTooltip = true;
+            //Set tooltip for header
+            gridcontrol.Model.RowStyles[0].ToolTip = "Hello";
+            gridcontrol.Model.RowStyles[0].ShowTooltip = true;
+                
+            //Set tooltip for specific row
+            gridcontrol.Model.RowStyles[1].ToolTip = " First row ";
+            gridcontrol.Model.RowStyles[1].ShowTooltip = true;
 
-                //Set tooltip for specific column
-                gridcontrol.Model.ColStyles[1].ToolTip = " First column ";
-                gridcontrol.Model.ColStyles[1].ShowTooltip = true;
+            //Set tooltip for specific column
+            gridcontrol.Model.ColStyles[1].ToolTip = " First column ";
+            gridcontrol.Model.ColStyles[1].ShowTooltip = true;
 
-                ////Reset the tooltip values for cell or row or column
-                //gridcontrol.Model[1, 1].ResetValue(GridStyleInfoStore.ToolTipProperty);
-                //gridcontrol.Model.RowStyles[1].ResetValue(GridStyleInfoStore.ToolTipProperty);
-                //gridcontrol.Model.ColStyles[1].ResetValue(GridStyleInfoStore.ToolTipProperty);
-            }
+            ////Reset the tooltip values for cell or row or column
+            //gridcontrol.Model[1, 1].ResetValue(GridStyleInfoStore.ToolTipProperty);
+            //gridcontrol.Model.RowStyles[1].ResetValue(GridStyleInfoStore.ToolTipProperty);
+            //gridcontrol.Model.ColStyles[1].ResetValue(GridStyleInfoStore.ToolTipProperty);
             grid.Children.Add(gridcontrol);
         }
 
