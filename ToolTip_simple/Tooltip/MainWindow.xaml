@@ -1,0 +1,14 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tooltip"        
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+        x:Class="Tooltip.MainWindow"
+        mc:Ignorable="d">
+    
+    <Grid Name="grid">
+        <syncfusion:GridControl Name="gridcontrol" />
+    </Grid>
+</Window>

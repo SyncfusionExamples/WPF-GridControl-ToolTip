@@ -1,0 +1,25 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tooltip"        
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+        x:Class="Tooltip.MainWindow"
+        mc:Ignorable="d">
+    
+    <Window.Resources>
+        <DataTemplate x:Key="tooltipTemplate1">
+            <Border Name="Border"
+                Background="Green"
+                BorderBrush="Red"
+                BorderThickness="1" Width="60" Height="20"
+                CornerRadius="0">
+                <TextBlock Background="AliceBlue" Foreground="Black" Text="{Binding Path=ToolTip}" Padding="2" />
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Name="grid">
+        <syncfusion:GridControl Name="gridcontrol" />
+    </Grid>
+</Window>
