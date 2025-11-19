@@ -1,4 +1,4 @@
-# WPF-GridControl-ToolTip
+# WPF GridControl ToolTip
 
 This repository contains the sample which shows add or remove the tooltip to a specific cell or row or column in [WPF GridControl](https://help.syncfusion.com/wpf/gridcontrol/overview).
 
@@ -15,6 +15,8 @@ gridcontrol.Model.RowStyles[1].ShowTooltip = true;
 gridcontrol.Model.ColStyles[1].ToolTip = "First column";
 gridcontrol.Model.ColStyles[1].ShowTooltip = true;
 ```
+
+![Showing ToolTip for row and column](ToolTipForRowAndColumn.png)
 
 ### Set ToolTip in QueryCellInfo event
 
@@ -35,6 +37,8 @@ private void Gridcontrol_QueryCellInfo(object sender, GridQueryCellInfoEventArgs
         e.Style.ToolTip = " Column " + "(" + e.Cell.RowIndex + "," + e.Cell.ColumnIndex + ") ";
 }
 ```
+
+![Showing ToolTip using QueryCellInfo](ToolTipUsingQueryCellInfo.png)
 
 ### Hide ToolTip for disabled cell
 
@@ -59,11 +63,13 @@ private void Gridcontrol_QueryCellInfo(object sender, GridQueryCellInfoEventArgs
 
 ### Customize the ToolTip
 
-The tooltip appearance can be customized by defining DataTemplate. The DataTemplate can be assigned to the GridStyleInfo.ToolTipTemplateKey or GridStyleInfo.ToolTipTemplate property. If you are using tooltipTemplate1 then you need to assign template to its corresponding template key property namely GridStyleInfo.ToolTipTemplate or GridStyleInfo.ToolTipTemplateKey.
+The tooltip appearance can be customized by defining DataTemplate. The DataTemplate can be assigned to the [GridStyleInfo.ToolTipTemplateKey](https://help.syncfusion.com/cr/wpf/Syncfusion.Windows.Controls.Grid.GridStyleInfo.html#Syncfusion_Windows_Controls_Grid_GridStyleInfo_TooltipTemplateKey) or [GridStyleInfo.ToolTipTemplate](https://help.syncfusion.com/cr/wpf/Syncfusion.Windows.Controls.Grid.GridStyleInfo.html#Syncfusion_Windows_Controls_Grid_GridStyleInfo_TooltipTemplate) property. If you are using tooltipTemplate1 then you need to assign template to its corresponding template key property namely GridStyleInfo.ToolTipTemplate or GridStyleInfo.ToolTipTemplateKey.
 
-GridStyleInfo which holds cell information is the DataContext for data template of ToolTip.
+[GridStyleInfo](https://help.syncfusion.com/cr/wpf/Syncfusion.Windows.Controls.Grid.GridStyleInfo.html) which holds cell information is the DataContext for data template of ToolTip.
 
-#### XAML
+#### Using ToolTipTemplateKey
+
+##### XAML
 
 ``` xml
 <Window.Resources>
@@ -79,7 +85,7 @@ GridStyleInfo which holds cell information is the DataContext for data template 
 </Window.Resources>
 ```
 
-#### Using ToolTipTemplateKey
+##### C#
 
 ``` csharp
 //Set the template key to a particular index
@@ -98,6 +104,24 @@ private void Gridcontrol_QueryCellInfo(object sender, GridQueryCellInfoEventArgs
 
 #### Using ToolTipTemplate
 
+##### XAML
+
+``` xml
+<Window.Resources>
+    <DataTemplate x:Key="tooltipTemplate1">
+        <Border Name="Border"
+                Background="Green"
+                BorderBrush="Black"
+                BorderThickness="1" Width="60" Height="20"
+                CornerRadius="0">
+            <TextBlock Background="Transparent" Text="{Binding Path=ToolTip}" Padding="2" />
+        </Border>
+    </DataTemplate>
+</Window.Resources>
+```
+
+##### C#
+
 ``` csharp
 //Set the template key to a particular index
 gridcontrol.Model[1, 1].TooltipTemplate = (DataTemplate)this.Resources["tooltipTemplate1"];
@@ -113,4 +137,12 @@ private void Gridcontrol_QueryCellInfo(object sender, GridQueryCellInfoEventArgs
 }
 ```
 
-![alt text](Customize_the_ToolTip.png)
+![Customizing ToolTip using ToolTipTemplate](Customize_the_ToolTip.png)
+
+### Remove the ToolTip
+
+The `ResetValue` method is used to remove the ToolTip for any cell or row or column in GridControl and to reset the ToolTip value to the default values.
+
+``` csharp
+gridcontrol.Model[1, 1].ResetValue(GridStyleInfoStore.ToolTipProperty);
+```
