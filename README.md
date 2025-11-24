@@ -137,7 +137,7 @@ private void Gridcontrol_QueryCellInfo(object sender, GridQueryCellInfoEventArgs
 }
 ```
 
-![Customizing ToolTip using ToolTipTemplate](Customize_the_ToolTip.png)
+![Customizing ToolTip using ToolTipTemplate](CustomizedToolTip.png)
 
 ### Remove the ToolTip
 
